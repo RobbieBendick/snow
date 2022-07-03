@@ -1,3 +1,26 @@
+local print = function(msg) if msg then DEFAULT_CHAT_FRAME:AddMessage(msg) end end
+
+function ClassicSnowfallSelfCast()
+    if (CS_SELF_ENABLED) then
+        return IsAltKeyDown();
+    else
+        return 0;
+    end
+end
+
+function ClassicSnowfallToggleSelfCast()
+    if (CS_SELF_ENABLED) then
+        CS_SELF_ENABLED = false
+        print("Classic Snowfall ALT SelfCast now disabled.")
+    else
+        CS_SELF_ENABLED = true
+        print("Classic Snowfall ALT SelfCast now enabled.")
+    end
+end
+
+SLASH_CS1 = "/csselfcast"
+SlashCmdList["CS"] = ClassicSnowfallToggleSelfCast;
+
 function ActionButtonDown(id)
     local button, pagedID
     if bongos == nil then
