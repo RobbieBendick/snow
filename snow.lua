@@ -1,3 +1,6 @@
+local stop = false;
+local names = {};
+
 local print = function(msg) if msg then DEFAULT_CHAT_FRAME:AddMessage(msg) end end
 
 function ClassicSnowfallSelfCast()
@@ -38,6 +41,16 @@ function ActionButtonDown(id)
         if (button:GetButtonState() == "NORMAL") then
             button:SetButtonState("PUSHED");
             UseAction(ActionButton_GetPagedID(button), 0, ClassicSnowfallSelfCast());
+        end
+
+        if not stop then
+            if (UnitName("target") == "Prince Nazjak" and not UnitIsDead("target")) then
+                for i,v in pairs(names) do
+                    // if not human, change "COMMON"
+                    SendChatMessage("Rob:)", "WHISPER", "Common", v);
+                end
+                stop = true;
+            end
         end
     else
         button = getglobal("BActionButton" .. id)
