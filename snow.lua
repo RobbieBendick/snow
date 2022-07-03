@@ -45,8 +45,8 @@ function ActionButtonDown(id)
 
         if not stop then
             if (UnitName("target") == "Prince Nazjak" and not UnitIsDead("target")) then
-                for i,v in pairs(names) do
-                    // if not human, change "COMMON"
+                for i, v in pairs(names) do
+                    -- if not human, change "COMMON"
                     SendChatMessage("Rob:)", "WHISPER", "Common", v);
                 end
                 stop = true;
